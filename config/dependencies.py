@@ -1,18 +1,37 @@
-from infrastructure.database.database import Database
-from infrastructure.repositories.sqlite.sqlite_repository_factory import (
-    SqliteRepositoryFactory,
+from infrastructure.database.postgres_database import PostgresDatabase
+
+from infrastructure.repositories.postgres.postgres_repository_factory import (
+    PostgresRepositoryFactory,
 )
-from infrastructure.unit_of_work.sqlite_unit_of_work import SqliteUnitOfWork
+
+from infrastructure.unit_of_work.postgres_unit_of_work import PostgresUnitOfWork
 
 from application.services.library_service import LibraryService
 from application.services.user_service import UserService
 from application.services.loan_service import LoanService
 
-database = Database("library.db")
+from config.settings import (
+    POSTGRES_HOST,
+    POSTGRES_PORT,
+    POSTGRES_DB,
+    POSTGRES_USER,
+    POSTGRES_PASSWORD,
+)
 
-repository_factory = SqliteRepositoryFactory()
+database = PostgresDatabase(
+    host=POSTGRES_HOST,
+    port=POSTGRES_PORT,
+    database=POSTGRES_DB,
+    user=POSTGRES_USER,
+    password=POSTGRES_PASSWORD,
+)
 
-uow = SqliteUnitOfWork(database, repository_factory)
+repository_factory = PostgresRepositoryFactory()
+
+uow = PostgresUnitOfWork(
+    database,
+    repository_factory,
+)
 
 library_service = LibraryService(uow)
 user_service = UserService(uow)
