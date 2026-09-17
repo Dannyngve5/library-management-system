@@ -47,11 +47,6 @@ PostgreSQL, create the PostgreSQL schema first and then run:
 \.venv\Scripts\python.exe scripts\migrate_sqlite_to_postgres.py
 ```
 
-The migration preserves primary keys and foreign-key relationships, converts
-SQLite availability values to PostgreSQL booleans, resets PostgreSQL
-sequences, and can be safely repeated because existing rows are updated with
-`ON CONFLICT ... DO UPDATE`.
-
 ## Architecture and Patterns
 
 - Domain entities and exceptions
