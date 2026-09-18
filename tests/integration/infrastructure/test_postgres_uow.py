@@ -1,8 +1,8 @@
 from infrastructure.database.postgres_database import PostgresDatabase
 from config.settings import (
-    POSTGRES_HOST,
     POSTGRES_PASSWORD,
     POSTGRES_PORT,
+    POSTGRES_TEST_HOST,
     POSTGRES_TEST_DB,
     POSTGRES_USER,
 )
@@ -15,7 +15,7 @@ from infrastructure.unit_of_work.postgres_unit_of_work import PostgresUnitOfWork
 def test_postgres_unit_of_work():
 
     database = PostgresDatabase(
-        host=POSTGRES_HOST,
+        host=POSTGRES_TEST_HOST,
         port=POSTGRES_PORT,
         database=POSTGRES_TEST_DB,
         user=POSTGRES_USER,

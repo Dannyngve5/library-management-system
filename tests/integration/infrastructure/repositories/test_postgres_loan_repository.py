@@ -6,9 +6,9 @@ from domain.entities.loan import Loan
 from domain.entities.user import User, UserRole
 
 from config.settings import (
-    POSTGRES_HOST,
     POSTGRES_PASSWORD,
     POSTGRES_PORT,
+    POSTGRES_TEST_HOST,
     POSTGRES_TEST_DB,
     POSTGRES_USER,
 )
@@ -30,7 +30,7 @@ from infrastructure.repositories.postgres.postgres_user_repository import (
 def test_insert_and_find_loan():
 
     database = PostgresDatabase(
-        host=POSTGRES_HOST,
+        host=POSTGRES_TEST_HOST,
         port=POSTGRES_PORT,
         database=POSTGRES_TEST_DB,
         user=POSTGRES_USER,

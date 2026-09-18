@@ -8,11 +8,6 @@ from datetime import date, timedelta
 def seed_database(uow):
 
     with uow as uow:
-
-        # ======================
-        # USERS
-        # ======================
-
         users = [
             User("Daniel", UserRole.STUDENT),
             User("Laura", UserRole.STUDENT),
@@ -23,10 +18,6 @@ def seed_database(uow):
 
         for user in users:
             uow.users.insert(user)
-
-        # ======================
-        # BOOKS + COPIES
-        # ======================
 
         books = [
             ("9780132350884", "Clean Code", "Robert C. Martin", 2),
@@ -55,10 +46,6 @@ def seed_database(uow):
                 uow.copies.insert(copy)
 
                 created_copies.append(copy)
-
-        # ======================
-        # LOANS
-        # ======================
 
         loan1 = Loan(
             None,

@@ -21,6 +21,11 @@ before running the commands below.
 \.venv\Scripts\python.exe -m infrastructure.migrations.postgres.migration
 ```
 
+For Docker, start PostgreSQL and the API with `docker compose up --build`.
+The API waits for PostgreSQL and applies the development migrations on startup.
+The hostname is `localhost` when tests run on Windows and `postgres` only
+inside the Docker network.
+
 Start the console interface:
 
 ```powershell
@@ -70,6 +75,14 @@ PostgreSQL, create the PostgreSQL schema first and then run:
 - `scripts/migrate_sqlite_to_postgres.py`: data transfer utility
 
 ## Tests
+
+The integration tests use a separate database. Prepare it against the running
+PostgreSQL container, then run pytest from the host:
+
+```powershell
+docker compose run --rm api python -m scripts.prepare_test_database
+\.venv\Scripts\python.exe -m pytest -q
+```
 
 ```powershell
 \.venv\Scripts\python.exe -m pytest -q

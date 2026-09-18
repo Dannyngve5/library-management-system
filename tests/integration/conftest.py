@@ -1,9 +1,9 @@
 import pytest
 
 from config.settings import (
-    POSTGRES_HOST,
     POSTGRES_PASSWORD,
     POSTGRES_PORT,
+    POSTGRES_TEST_HOST,
     POSTGRES_TEST_DB,
     POSTGRES_USER,
 )
@@ -14,7 +14,7 @@ from infrastructure.database.postgres_database import PostgresDatabase
 def clean_postgres_database():
 
     database = PostgresDatabase(
-        host=POSTGRES_HOST,
+        host=POSTGRES_TEST_HOST,
         port=POSTGRES_PORT,
         database=POSTGRES_TEST_DB,
         user=POSTGRES_USER,

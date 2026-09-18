@@ -13,6 +13,7 @@ def _required_setting(name: str) -> str:
 
 
 POSTGRES_HOST = _required_setting("POSTGRES_HOST")
+POSTGRES_TEST_HOST = os.getenv("POSTGRES_TEST_HOST", "localhost")
 POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", "5432"))
 POSTGRES_DB = _required_setting("POSTGRES_DB")
 POSTGRES_TEST_DB = os.getenv("POSTGRES_TEST_DB", "library_postgres_test")

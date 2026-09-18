@@ -2,9 +2,9 @@ from domain.entities.book import Book
 from domain.entities.copy import Copy
 
 from config.settings import (
-    POSTGRES_HOST,
     POSTGRES_PASSWORD,
     POSTGRES_PORT,
+    POSTGRES_TEST_HOST,
     POSTGRES_TEST_DB,
     POSTGRES_USER,
 )
@@ -20,7 +20,7 @@ from infrastructure.repositories.postgres.postgres_copy_repository import (
 def test_insert_and_find_copy():
 
     database = PostgresDatabase(
-        host=POSTGRES_HOST,
+        host=POSTGRES_TEST_HOST,
         port=POSTGRES_PORT,
         database=POSTGRES_TEST_DB,
         user=POSTGRES_USER,
